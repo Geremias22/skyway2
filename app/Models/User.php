@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -49,5 +50,20 @@ class User extends Authenticatable
     public function preferences()
     {
         return $this->hasOne(\App\Models\UserPreference::class);
+    }
+    
+    public function tripSearches(): HasMany
+    {
+        return $this->hasMany(TripSearch::class);
+    }
+
+    public function itineraries(): HasMany
+    {
+        return $this->hasMany(Itinerary::class);
+    }
+
+    public function savedGuides(): HasMany
+    {
+        return $this->hasMany(SavedGuide::class);
     }
 }
