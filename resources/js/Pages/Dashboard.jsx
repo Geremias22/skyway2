@@ -24,3 +24,4 @@ export default function Dashboard() {
         </AuthenticatedLayout>
     );
 }
+Dashboard.layout = (page) => <AuthenticatedLayout>{page}</AuthenticatedLayout>;
