@@ -1,0 +1,633 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   TOKENS + BASE
+========================= */
+@layer base {
+  :root {
+ 
+/* -------------------------------------
+        paleta de color frio
+------------------------------------- */
+    /* --sky-bg: 10 16 32;
+    --sky-fg: 245 248 255;
+    --sky-muted: 180 198 222;
+
+    --sky-accent: 102 204 255; 
+    --sky-accent-2: 90 110 255;
+    --sky-neon: 150 255 230;   
+
+    --sky-glass: 7 12 22;
+    --sky-border: 255 255 255; */
+
+
+
+/* -------------------------------------
+        paleta de color cálido
+------------------------------------- */
+    /* --sky-bg: 14 16 26;
+    --sky-fg: 250 250 252;
+    --sky-muted: 200 205 220;
+
+    --sky-accent: 255 150 90;   
+    --sky-accent-2: 255 110 140;
+    --sky-neon: 255 215 140;    
+
+    --sky-glass: 10 10 18;
+    --sky-border: 255 255 255;  */
+
+
+    /* Base (más luminosa, menos negra) */
+    --sky-bg: 12 20 34;        /* azul petróleo oscuro */
+    --sky-fg: 248 251 255;     /* casi blanco */
+    --sky-muted: 198 214 232;  /* gris azulado legible */
+
+    /* Marca (thalo protagonista) */
+    --sky-accent: 36 214 200;      /* THALO (teal brillante) */
+    --sky-accent-2: 102 200 255;   /* azul cielo (complementario thalo) */
+    --sky-neon: 120 229 255;       /* cyan suave (solo halo) */
+
+    /* Superficies */
+    --sky-glass: 10 18 28;     /* tinte petróleo para glass */
+    --sky-border: 255 255 255;
+    /* Hero (opcional: mete imagen en /public/images/hero-skyway.jpg) */
+    --sky-hero-image: url("/images/hero-skyway.jpg");
+  }
+
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--sky-accent) / 0.70) rgb(var(--sky-glass) / 0.95);
+  }
+
+  /* Chrome / Edge / Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Track (oscuro, tipo glass) */
+  *::-webkit-scrollbar-track {
+    background: rgb(var(--sky-glass) / 0.45);
+    border-radius: 999px;
+    box-shadow: 0 0 0 1px rgb(var(--sky-border) / 0.08) inset;
+  }
+
+  /* Thumb (acento + halo) */
+  *::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      rgb(var(--sky-accent) / 0.85),
+      rgb(var(--sky-neon) / 0.55)
+    );
+    border-radius: 999px;
+
+    /* “separación” del track sin blanquearlo */
+    border: 2px solid rgb(var(--sky-glass) / 0.65);
+
+    box-shadow:
+      0 0 18px rgb(var(--sky-accent) / 0.12);
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      180deg,
+      rgb(var(--sky-accent) / 0.95),
+      rgb(var(--sky-neon) / 0.70)
+    );
+  }
+  .sky-root{
+  min-height: 100vh;
+  position: relative;
+
+  background:
+    radial-gradient(1200px 800px at 15% 10%, rgb(var(--sky-neon) / 0.08), transparent 100%),
+    radial-gradient(1000px 700px at 85% 12%, rgb(var(--sky-accent) / 0.10), transparent 100%),
+    radial-gradient(1100px 900px at 50% 95%, rgb(var(--sky-accent-2) / 0.08), transparent 100%),
+    linear-gradient(180deg, rgb(var(--sky-bg)) 0%, rgb(6 8 16) 45%, rgb(8 10 18) 100%);
+}
+
+/* blobs + grano */
+.sky-root::before,
+.sky-root::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sky-root::before{
+  background:
+    radial-gradient(700px 520px at 18% 22%, rgb(var(--sky-accent) / 0.18), transparent 62%),
+    radial-gradient(680px 480px at 76% 18%, rgb(var(--sky-neon) / 0.14), transparent 60%),
+    radial-gradient(860px 640px at 52% 88%, rgb(var(--sky-accent-2) / 0.12), transparent 66%);
+  filter: blur(18px);
+  opacity: .9;
+}
+
+.sky-root::after{
+  background:
+    radial-gradient(1200px 900px at 50% 10%, rgba(0,0,0,0.15), transparent 60%),
+    radial-gradient(1200px 900px at 50% 100%, rgba(0,0,0,0.35), transparent 55%),
+    linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  mix-blend-mode: overlay;
+  opacity: .55;
+}
+
+/* el contenido por encima */
+.sky-root-content{
+  position: relative;
+  z-index: 1;
+}
+  body {
+    /* Fondo base con degradado (oscuro + leve azul) */
+    background:
+      radial-gradient(1200px 800px at 15% 10%, rgb(var(--sky-neon) / 0.08), transparent 55%),
+      radial-gradient(1000px 700px at 85% 12%, rgb(var(--sky-accent) / 0.10), transparent 60%),
+      radial-gradient(1100px 900px at 50% 95%, rgb(var(--sky-accent-2) / 0.08), transparent 65%),
+      linear-gradient(180deg,
+        rgb(var(--sky-bg)) 0%,
+        rgb(6 8 16) 45%,
+        rgb(8 10 18) 100%
+      );
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* “Blobs” suaves por encima del background */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    background:
+      radial-gradient(700px 520px at 18% 22%, rgb(var(--sky-accent) / 0.18), transparent 62%),
+      radial-gradient(680px 480px at 76% 18%, rgb(var(--sky-neon) / 0.14), transparent 60%),
+      radial-gradient(860px 640px at 52% 88%, rgb(var(--sky-accent-2) / 0.12), transparent 66%);
+
+    filter: blur(18px);
+    opacity: 0.9;
+  }
+
+  /* Grano + viñeta (profundidad) */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    background:
+      radial-gradient(1200px 900px at 50% 10%, rgba(0,0,0,0.15), transparent 60%),
+      radial-gradient(1200px 900px at 50% 100%, rgba(0,0,0,0.35), transparent 55%),
+      linear-gradient(to bottom,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.01)
+      );
+
+    mix-blend-mode: overlay;
+    opacity: 0.55;
+  }
+}
+
+/* =========================
+   COMPONENTES SKY (CSS PURO)
+========================= */
+@layer components {
+  /* Layout general Home */
+  .sky-page {
+    padding: 28px 16px 64px;
+  }
+
+  .sky-container {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    gap: 28px;
+  }
+
+  /* Hero */
+  .sky-hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+  }
+
+  .sky-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(900px 560px at 18% 30%, rgb(var(--sky-accent) / 0.45), transparent 62%),
+      radial-gradient(820px 520px at 70% 28%, rgb(var(--sky-accent-2) / 0.30), transparent 64%),
+      linear-gradient(to bottom, rgb(var(--sky-bg) / 0.15), rgb(var(--sky-bg) / 0.92)),
+      var(--sky-hero-image);
+    background-size: cover;
+    background-position: center;
+    filter: saturate(1.06) contrast(1.05);
+    transform: scale(1.02);
+  }
+
+  .sky-hero-inner {
+    position: relative;
+    z-index: 1;
+    padding: 22px;
+  }
+
+  /* Panel glass */
+  .sky-panel {
+    border-radius: 28px;
+    border: 1px solid rgb(var(--sky-border) / 0.12);
+    background: rgb(var(--sky-glass) / 0.38);
+    border: 1px solid rgb(var(--sky-border) / 0.10);    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.06) inset,
+      0 20px 70px rgba(0,0,0,0.45),
+      0 0 34px rgb(var(--sky-neon) / 0.10);
+  }
+
+  .sky-card {
+    border-radius: 18px;
+    border: 1px solid rgb(var(--sky-border) / 0.10);
+    background: rgb(var(--sky-glass) / 0.28);
+    border: 1px solid rgb(var(--sky-border) / 0.08);    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.04) inset,
+      0 14px 46px rgba(0,0,0,0.40);
+  }
+
+  /* Tipografía */
+  .sky-heading {
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    color: rgb(var(--sky-fg) / 0.96);
+  }
+
+  .sky-muted {
+    color: rgb(var(--sky-muted) / 0.78);
+  }
+
+  .sky-logo {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 720;
+    letter-spacing: -0.03em;
+    color: rgb(var(--sky-fg) / 0.98);
+    text-shadow:
+      0 0 18px rgb(var(--sky-neon) / 0.16),
+      0 0 40px rgb(var(--sky-accent) / 0.10);
+  }
+
+  .sky-subtitle {
+    margin-top: 6px;
+    font-size: 0.98rem;
+    color: rgb(var(--sky-muted) / 0.78);
+  }
+
+  /* Chips (tabs) */
+  .sky-chiprow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .sky-chip {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid rgb(var(--sky-border) / 0.14);
+    background: rgba(0,0,0,0.18);
+    color: rgb(var(--sky-fg) / 0.86);
+    font-size: 0.88rem;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+  }
+
+  .sky-chip:hover {
+    transform: translateY(-1px);
+    background: rgba(0,0,0,0.24);
+    box-shadow: 0 0 22px rgb(var(--sky-accent) / 0.10);
+  }
+
+  .sky-chip.is-active {
+    border-color: rgb(var(--sky-neon) / 0.45);
+    background: linear-gradient(
+      90deg,
+      rgb(var(--sky-accent) / 0.18),
+      rgb(var(--sky-neon) / 0.14),
+      rgb(var(--sky-accent-2) / 0.14)
+    );
+    box-shadow:
+      0 0 0 1px rgb(var(--sky-neon) / 0.10) inset,
+      0 0 26px rgb(var(--sky-neon) / 0.14);
+  }
+
+  /* Inputs glass */
+  .sky-input {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid rgb(var(--sky-border) / 0.14);
+    padding: 10px 12px;
+    outline: none;
+    background: rgba(0,0,0,0.20);
+    color: rgb(var(--sky-fg) / 0.92);
+    transition: box-shadow .15s ease, border-color .15s ease;
+  }
+
+  .sky-input::placeholder {
+    color: rgb(var(--sky-muted) / 0.55);
+  }
+
+  .sky-input:focus {
+    border-color: rgb(var(--sky-neon) / 0.55);
+    box-shadow: 0 0 0 3px rgb(var(--sky-neon) / 0.14);
+  }
+
+  /* CTA */
+  .sky-btn {
+    font-weight: 650;
+    border-radius: 14px;
+    padding: 10px 18px;
+    color: rgba(255,255,255,0.92);
+    background: linear-gradient(
+      90deg,
+      rgb(var(--sky-accent) / 0.38),
+      rgb(var(--sky-neon) / 0.28),
+      rgb(var(--sky-accent-2) / 0.28)
+    );
+    border: 1px solid rgb(var(--sky-neon) / 0.32);
+    box-shadow:
+      0 0 26px rgb(var(--sky-neon) / 0.14),
+      0 14px 40px rgba(0,0,0,0.40);
+    transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
+  }
+
+  .sky-btn:hover {
+    filter: brightness(1.06);
+    box-shadow:
+      0 0 32px rgb(var(--sky-neon) / 0.18),
+      0 18px 50px rgba(0,0,0,0.45);
+  }
+
+  .sky-btn:active {
+    transform: translateY(1px);
+  }
+
+  /* Separador glow */
+  .sky-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(var(--sky-neon) / 0.38), transparent);
+    box-shadow: 0 0 18px rgb(var(--sky-neon) / 0.10);
+  }
+
+  /* Mini-cards de features */
+  .sky-feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  @media (min-width: 768px) {
+    .sky-feature-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .sky-feature {
+    padding: 14px 14px;
+  }
+
+  .sky-feature-title {
+    font-weight: 650;
+    color: rgb(var(--sky-fg) / 0.92);
+    margin-bottom: 6px;
+  }
+
+  .sky-feature-text {
+    color: rgb(var(--sky-muted) / 0.75);
+    font-size: 0.92rem;
+    line-height: 1.35rem;
+  }
+
+
+  /* ------------------------------------------------------------------ */
+
+  .sky-navbar{
+    position: sticky;
+    top: 0;
+    z-index: 60;
+
+    /* glass */
+    background: rgba(0,0,0,0.40);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid rgb(var(--sky-border) / 0.10);
+    box-shadow:
+      0 10px 30px rgba(0,0,0,0.30),
+      0 0 26px rgb(var(--sky-neon) / 0.10);
+
+    /* evita que el overlay del root “afecte” visualmente */
+    isolation: isolate;
+  }
+
+  /* línea glow sutil inferior */
+  .sky-navbar::after{
+    content:"";
+    position:absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--sky-neon) / 0.35),
+      transparent
+    );
+    opacity: .9;
+    pointer-events:none;
+  }
+
+  .sky-brand{
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: rgb(var(--sky-fg) / 0.95);
+    text-shadow:
+      0 0 18px rgb(var(--sky-neon) / 0.16),
+      0 0 36px rgb(var(--sky-accent) / 0.10);
+  }
+
+  .sky-navitem{
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+
+    padding: 8px 12px;
+    border-radius: 999px;
+
+    color: rgb(var(--sky-fg) / 0.80);
+    border: 1px solid transparent;
+    background: transparent;
+
+    transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease, color .15s ease;
+  }
+
+  .sky-navitem:hover{
+    transform: translateY(-1px);
+    background: rgba(255,255,255,0.06);
+    border-color: rgb(var(--sky-border) / 0.10);
+    box-shadow: 0 0 18px rgb(var(--sky-accent) / 0.10);
+    color: rgb(var(--sky-fg) / 0.92);
+  }
+
+  .sky-navitem-active{
+    background: linear-gradient(
+      90deg,
+      rgb(var(--sky-accent) / 0.18),
+      rgb(var(--sky-neon) / 0.12),
+      rgb(var(--sky-accent-2) / 0.12)
+    );
+    border-color: rgb(var(--sky-neon) / 0.35);
+    box-shadow:
+      0 0 0 1px rgb(var(--sky-neon) / 0.10) inset,
+      0 0 20px rgb(var(--sky-neon) / 0.10);
+    color: rgb(var(--sky-fg) / 0.96);
+  }
+
+
+
+  .sky-footer{
+  position: relative;
+  margin-top: 28px;
+  padding-top: 10px;
+
+  /* glass oscuro pero luminoso */
+  background: rgb(var(--sky-glass) / 0.28);
+  border-top: 1px solid rgb(var(--sky-border) / 0.10);
+
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 -18px 60px rgba(0,0,0,0.35),
+    0 0 30px rgb(var(--sky-accent) / 0.08);
+  isolation: isolate;
+}
+
+.sky-footer::before{
+  content:"";
+  position:absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(var(--sky-accent) / 0.28),
+    rgb(var(--sky-neon) / 0.18),
+    transparent
+  );
+  pointer-events:none;
+  opacity: .95;
+}
+
+.sky-footer-brand{
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: rgb(var(--sky-fg) / 0.95);
+  text-shadow: 0 0 18px rgb(var(--sky-accent) / 0.10);
+}
+
+.sky-footer-text{
+  font-size: 0.90rem;
+  line-height: 1.35rem;
+  color: rgb(var(--sky-muted) / 0.78);
+}
+
+.sky-footer-link{
+  color: rgb(var(--sky-fg) / 0.78);
+  transition: color .15s ease, transform .15s ease, text-shadow .15s ease;
+  text-decoration: none;
+}
+
+.sky-footer-link:hover{
+  color: rgb(var(--sky-fg) / 0.95);
+  text-shadow: 0 0 16px rgb(var(--sky-accent) / 0.12);
+  transform: translateY(-1px);
+}
+
+.sky-footer-meta{
+  font-size: 0.78rem;
+  color: rgb(var(--sky-muted) / 0.60);
+}
+
+.sky-footer-meta-link{
+  font-size: 0.78rem;
+  color: rgb(var(--sky-muted) / 0.60);
+  cursor: default;
+  transition: color .15s ease;
+}
+
+.sky-footer-meta-link:hover{
+  color: rgb(var(--sky-muted) / 0.78);
+}
+
+
+.sky-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 96px 16px 16px; /* baja el modal en móvil */
+  }
+
+  @media (min-width: 640px) {
+    .sky-modal {
+      align-items: center;
+      padding: 24px;
+    }
+  }
+
+  .sky-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.60);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+
+  .sky-modal-panel {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .sky-modal-body {
+    max-height: 85vh;
+    overflow: auto;
+  }
+
+  /* opcional: disabled consistente */
+  .sky-btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* opcional: error con tu input */
+  .sky-input.is-error {
+    border-color: rgba(248, 113, 113, 0.70); /* red-400 */
+    box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.14);
+  }
+}

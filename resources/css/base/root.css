@@ -1,0 +1,91 @@
+.sky-root {
+  min-height: 100vh;
+  position: relative;
+
+  background:
+    radial-gradient(1200px 800px at 15% 10%, rgb(var(--sky-neon) / 0.08), transparent 100%),
+    radial-gradient(1000px 700px at 85% 12%, rgb(var(--sky-accent) / 0.10), transparent 100%),
+    radial-gradient(1100px 900px at 50% 95%, rgb(var(--sky-accent-2) / 0.08), transparent 100%),
+    linear-gradient(180deg, rgb(var(--sky-bg)) 0%, rgb(6 8 16) 45%, rgb(8 10 18) 100%);
+}
+
+.sky-root::before,
+.sky-root::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sky-root::before {
+  background:
+    radial-gradient(700px 520px at 18% 22%, rgb(var(--sky-accent) / 0.18), transparent 62%),
+    radial-gradient(680px 480px at 76% 18%, rgb(var(--sky-neon) / 0.14), transparent 60%),
+    radial-gradient(860px 640px at 52% 88%, rgb(var(--sky-accent-2) / 0.12), transparent 66%);
+  filter: blur(18px);
+  opacity: .9;
+}
+
+.sky-root::after {
+  background:
+    radial-gradient(1200px 900px at 50% 10%, rgba(0,0,0,0.15), transparent 60%),
+    radial-gradient(1200px 900px at 50% 100%, rgba(0,0,0,0.35), transparent 55%),
+    linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  mix-blend-mode: overlay;
+  opacity: .55;
+}
+
+.sky-root-content {
+  position: relative;
+  z-index: 1;
+}
+
+body {
+  background:
+    radial-gradient(1200px 800px at 15% 10%, rgb(var(--sky-neon) / 0.08), transparent 55%),
+    radial-gradient(1000px 700px at 85% 12%, rgb(var(--sky-accent) / 0.10), transparent 60%),
+    radial-gradient(1100px 900px at 50% 95%, rgb(var(--sky-accent-2) / 0.08), transparent 65%),
+    linear-gradient(180deg,
+      rgb(var(--sky-bg)) 0%,
+      rgb(6 8 16) 45%,
+      rgb(8 10 18) 100%
+    );
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+  background:
+    radial-gradient(700px 520px at 18% 22%, rgb(var(--sky-accent) / 0.18), transparent 62%),
+    radial-gradient(680px 480px at 76% 18%, rgb(var(--sky-neon) / 0.14), transparent 60%),
+    radial-gradient(860px 640px at 52% 88%, rgb(var(--sky-accent-2) / 0.12), transparent 66%);
+
+  filter: blur(18px);
+  opacity: 0.9;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+  background:
+    radial-gradient(1200px 900px at 50% 10%, rgba(0,0,0,0.15), transparent 60%),
+    radial-gradient(1200px 900px at 50% 100%, rgba(0,0,0,0.35), transparent 55%),
+    linear-gradient(to bottom,
+      rgba(255,255,255,0.03),
+      rgba(255,255,255,0.01)
+    );
+
+  mix-blend-mode: overlay;
+  opacity: 0.55;
+}

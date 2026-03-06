@@ -1,0 +1,25 @@
+.sky-heading {
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: rgb(var(--sky-fg) / 0.96);
+}
+
+.sky-muted {
+  color: rgb(var(--sky-muted) / 0.78);
+}
+
+.sky-logo {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 720;
+  letter-spacing: -0.03em;
+  color: rgb(var(--sky-fg) / 0.98);
+  text-shadow:
+    0 0 18px rgb(var(--sky-neon) / 0.16),
+    0 0 40px rgb(var(--sky-accent) / 0.10);
+}
+
+.sky-subtitle {
+  margin-top: 6px;
+  font-size: 0.98rem;
+  color: rgb(var(--sky-muted) / 0.78);
+}

@@ -1,0 +1,24 @@
+.sky-input {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgb(var(--sky-border) / 0.14);
+  padding: 10px 12px;
+  outline: none;
+  background: rgba(0,0,0,0.20);
+  color: rgb(var(--sky-fg) / 0.92);
+  transition: box-shadow .15s ease, border-color .15s ease;
+}
+
+.sky-input::placeholder {
+  color: rgb(var(--sky-muted) / 0.55);
+}
+
+.sky-input:focus {
+  border-color: rgb(var(--sky-neon) / 0.55);
+  box-shadow: 0 0 0 3px rgb(var(--sky-neon) / 0.14);
+}
+
+.sky-input.is-error {
+  border-color: rgba(248, 113, 113, 0.70);
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.14);
+}

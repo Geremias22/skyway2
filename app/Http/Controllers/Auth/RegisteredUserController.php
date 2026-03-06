@@ -28,12 +28,12 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', /* Password rules */],
         ]);
 
         $user = User::create([
@@ -42,10 +42,24 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        // 1) Rol por defecto (si usas Spatie)
+        if (method_exists($user, 'assignRole')) {
+            $user->assignRole('user');
+        }
 
+        // 2) Preferencias por defecto
+        $user->preferences()->create([
+            'currency' => 'EUR',
+            'interests' => [],
+            'vibes' => [],
+            'budget_min' => null,
+            'budget_max' => null,
+            'home_airport_iata' => null,
+        ]);
+
+        event(new Registered($user));
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect()->intended(route('home'));
     }
 }

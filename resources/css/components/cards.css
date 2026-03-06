@@ -1,0 +1,95 @@
+.sky-page {
+  padding: 28px 16px 64px;
+}
+
+.sky-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  gap: 28px;
+}
+
+.sky-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.sky-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(900px 560px at 18% 30%, rgb(var(--sky-accent) / 0.45), transparent 62%),
+    radial-gradient(820px 520px at 70% 28%, rgb(var(--sky-accent-2) / 0.30), transparent 64%),
+    linear-gradient(to bottom, rgb(var(--sky-bg) / 0.15), rgb(var(--sky-bg) / 0.92)),
+    var(--sky-hero-image);
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.06) contrast(1.05);
+  transform: scale(1.02);
+}
+
+.sky-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding: 22px;
+}
+
+.sky-panel {
+  border-radius: 28px;
+  border: 1px solid rgb(var(--sky-border) / 0.12);
+  background: rgb(var(--sky-glass) / 0.38);
+  border: 1px solid rgb(var(--sky-border) / 0.10);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06) inset,
+    0 20px 70px rgba(0,0,0,0.45),
+    0 0 34px rgb(var(--sky-neon) / 0.10);
+}
+
+.sky-card {
+  border-radius: 18px;
+  border: 1px solid rgb(var(--sky-border) / 0.10);
+  background: rgb(var(--sky-glass) / 0.28);
+  border: 1px solid rgb(var(--sky-border) / 0.08);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04) inset,
+    0 14px 46px rgba(0,0,0,0.40);
+}
+
+.sky-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(var(--sky-neon) / 0.38), transparent);
+  box-shadow: 0 0 18px rgb(var(--sky-neon) / 0.10);
+}
+
+.sky-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .sky-feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.sky-feature {
+  padding: 14px 14px;
+}
+
+.sky-feature-title {
+  font-weight: 650;
+  color: rgb(var(--sky-fg) / 0.92);
+  margin-bottom: 6px;
+}
+
+.sky-feature-text {
+  color: rgb(var(--sky-muted) / 0.75);
+  font-size: 0.92rem;
+  line-height: 1.35rem;
+}

@@ -4,6 +4,8 @@ import { useState } from "react";
 import SearchPanel from "@/Components/Home/SearchPanel";
 import InfoSection from "@/Components/Home/InfoSection";
 import ItineraryTabs from "@/Components/Home/ItineraryTabs";
+import WhySkywaySection from "@/Components/Home/WhySkywaySection";
+import HowItWorksSection from "@/Components/Home/HowItWorksSection";
 
 export default function Home() {
   // 1) Estado “global” de Home
@@ -31,20 +33,23 @@ export default function Home() {
   };
 
   return (
-    <div className="space-y-10">
-      <SearchPanel
-        mode={mode}
-        onModeChange={setMode}
-        values={values}
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-      />
+    <div className="sky-page test">
+      <div className="sky-container">
+        <SearchPanel
+          mode={mode}
+          onModeChange={setMode}
+          values={values}
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+        />
 
-      <InfoSection />
+        <InfoSection />
 
-      <ItineraryTabs active={itineraryTab} onChange={setItineraryTab} />
+        <ItineraryTabs active={itineraryTab} onChange={setItineraryTab} />
+        <WhySkywaySection />
+        <HowItWorksSection />
+      </div>
     </div>
   );
 }
-
 Home.layout = (page) => <GuestLayout>{page}</GuestLayout>;

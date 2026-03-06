@@ -1,0 +1,35 @@
+.sky-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 96px 16px 16px;
+}
+
+@media (min-width: 640px) {
+  .sky-modal {
+    align-items: center;
+    padding: 24px;
+  }
+}
+
+.sky-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.60);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.sky-modal-panel {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.sky-modal-body {
+  max-height: 85vh;
+  overflow: auto;
+}

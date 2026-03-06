@@ -1,0 +1,156 @@
+.sky-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+
+  background: rgba(0,0,0,0.40);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgb(var(--sky-border) / 0.10);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.30),
+    0 0 26px rgb(var(--sky-neon) / 0.10);
+
+  isolation: isolate;
+}
+
+.sky-navbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(var(--sky-neon) / 0.35),
+    transparent
+  );
+  opacity: .9;
+  pointer-events: none;
+}
+
+.sky-brand {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: rgb(var(--sky-fg) / 0.95);
+  text-shadow:
+    0 0 18px rgb(var(--sky-neon) / 0.16),
+    0 0 36px rgb(var(--sky-accent) / 0.10);
+}
+
+.sky-navitem {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+
+  padding: 8px 12px;
+  border-radius: 999px;
+
+  color: rgb(var(--sky-fg) / 0.80);
+  border: 1px solid transparent;
+  background: transparent;
+
+  transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease, color .15s ease;
+}
+
+.sky-navitem:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.06);
+  border-color: rgb(var(--sky-border) / 0.10);
+  box-shadow: 0 0 18px rgb(var(--sky-accent) / 0.10);
+  color: rgb(var(--sky-fg) / 0.92);
+}
+
+.sky-navitem-active {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--sky-accent) / 0.18),
+    rgb(var(--sky-neon) / 0.12),
+    rgb(var(--sky-accent-2) / 0.12)
+  );
+  border-color: rgb(var(--sky-neon) / 0.35);
+  box-shadow:
+    0 0 0 1px rgb(var(--sky-neon) / 0.10) inset,
+    0 0 20px rgb(var(--sky-neon) / 0.10);
+  color: rgb(var(--sky-fg) / 0.96);
+}
+
+.sky-footer {
+  position: relative;
+  margin-top: 28px;
+  padding-top: 10px;
+
+  background: rgb(var(--sky-glass) / 0.28);
+  border-top: 1px solid rgb(var(--sky-border) / 0.10);
+
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 -18px 60px rgba(0,0,0,0.35),
+    0 0 30px rgb(var(--sky-accent) / 0.08);
+  isolation: isolate;
+}
+
+.sky-footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(var(--sky-accent) / 0.28),
+    rgb(var(--sky-neon) / 0.18),
+    transparent
+  );
+  pointer-events: none;
+  opacity: .95;
+}
+
+.sky-footer-brand {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: rgb(var(--sky-fg) / 0.95);
+  text-shadow: 0 0 18px rgb(var(--sky-accent) / 0.10);
+}
+
+.sky-footer-text {
+  font-size: 0.90rem;
+  line-height: 1.35rem;
+  color: rgb(var(--sky-muted) / 0.78);
+}
+
+.sky-footer-link {
+  color: rgb(var(--sky-fg) / 0.78);
+  transition: color .15s ease, transform .15s ease, text-shadow .15s ease;
+  text-decoration: none;
+}
+
+.sky-footer-link:hover {
+  color: rgb(var(--sky-fg) / 0.95);
+  text-shadow: 0 0 16px rgb(var(--sky-accent) / 0.12);
+  transform: translateY(-1px);
+}
+
+.sky-footer-meta {
+  font-size: 0.78rem;
+  color: rgb(var(--sky-muted) / 0.60);
+}
+
+.sky-footer-meta-link {
+  font-size: 0.78rem;
+  color: rgb(var(--sky-muted) / 0.60);
+  cursor: default;
+  transition: color .15s ease;
+}
+
+.sky-footer-meta-link:hover {
+  color: rgb(var(--sky-muted) / 0.78);
+}
